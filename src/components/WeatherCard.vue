@@ -1,29 +1,34 @@
 <template>
   <ion-card>
     <div class="weather-card-content">
-
       <ion-card-header>
-        <ion-card-subtitle>Sun, 23 April, 11:33</ion-card-subtitle>
-        <ion-card-title>32°<sup>c</sup></ion-card-title>
+        <ion-card-title>{{ weatherStore.formatTemperature(weatherStore.weather?.current.temp, 'C') }}</ion-card-title>
+        <ion-card-subtitle>{{ new Date().toLocaleString('en-us', options) }}</ion-card-subtitle>
       </ion-card-header>
-
       <ion-card-content>
-        <span>Clear</span>
+        <span
+          style="text-transform: capitalize; font-size: 14px;">{{ weatherStore.weather?.current.weather[0].description }}</span>
         <br>
-        <span>feels like 34°</span>
+        <span style="text-transform: capitalize; font-size: 14px;">Feels like
+          {{ parseInt(String(weatherStore.weather?.current.feels_like)) }} &deg; C</span>
+
       </ion-card-content>
     </div>
     <div class="weather-img-icon">
-      <img
-        src="https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dGhlJTIwc3VuJTIwaWNvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
-        alt="">
+      <img :src="weatherStore.getWeatherImageUrl(weatherStore.weather?.current?.weather[0].icon, '4x')" />
     </div>
   </ion-card>
 </template>
 
 <script lang="ts" setup>
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle } from '@ionic/vue'
-import { defineComponent } from 'vue'
+import { useWeatherStore } from "../store/weather"
+
+const weatherStore = useWeatherStore()
+
+const options: any = { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' };
+
+
 </script>
 
 <style scoped>
