@@ -47,10 +47,10 @@ ion-card {
   justify-content: center;
 }
 
-.weather-img-icon img {
-  /* width: 50px;
-  height: 50px; */
+ion-card-title {
+  font-size: 35px;
 }
+
 
 ion-card-content {
   color: #000;
