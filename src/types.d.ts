@@ -27,12 +27,13 @@ interface CurrentWeather {
   wind_speed: number
 }
 
-interface DailyWeather {
+export interface DailyWeather {
+  dt: number
   feels_like: FeelsLike
   humidity: number
   sunrise: number
   sunset: number
-  temperature: Temperature
+  temp: Temperature
   weather: Weather[]
   wind_speed: number
 }

@@ -1,13 +1,19 @@
 <template>
-  <WeatherCard></WeatherCard>
-  <ion-list>
-    <ion-list-header>
-      <ion-label>
-        <h1>Forecast</h1>
-      </ion-label>
-    </ion-list-header>
-    <ForcastItem v-for="i in 3" :key="i" />
-  </ion-list>
+  <div v-if="weatherStore.weather && weatherStore.address">
+    <p style="width: 100%; text-align: center;">{{ weatherStore.address.city }}</p>
+    <WeatherCard></WeatherCard>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <h1>Forecast</h1>
+        </ion-label>
+      </ion-list-header>
+      <div class="item-list">
+
+        <ForcastItem v-for="(weather, i) in weatherStore.weather?.daily" :key="i" :weather="weather" />
+      </div>
+    </ion-list>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -19,13 +25,16 @@ import { onMounted } from "vue"
 
 const weatherStore = useWeatherStore()
 
+
 onMounted(async () => {
   await weatherStore.getWeather()
 })
 </script>
 
 <style scoped>
-ion-list {
-  max-width: 350px;
+.item-list {
+  width: 100%;
+  height: 410px;
+  overflow: auto;
 }
 </style>

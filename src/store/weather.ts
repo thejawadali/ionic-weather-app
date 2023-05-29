@@ -1,12 +1,12 @@
 import { defineStore } from "pinia"
 import { Geolocation } from '@capacitor/geolocation'
-// import { key } from '@/weather/weather-api-key';
+import type { SingleWeather } from "../types"
 
 
 export const useWeatherStore = defineStore('weatherStore', {
   state: () => {
     return {
-      weather: null as any,
+      weather: null as SingleWeather | null,
       address: null as any
     }
   },
@@ -35,6 +35,12 @@ export const useWeatherStore = defineStore('weatherStore', {
         console.error(error)
         throw error
       }
+    },
+    getWeatherImageUrl(iconName: string | undefined, size: '2x' | '4x') {
+      return `http://openweathermap.org/img/wn/${iconName}@${size ? size : '1x'}.png`
+    },
+    formatTemperature(value: number | undefined, format: 'F' | 'C') {
+      return value ? `${Math.round(value)}° ${format}` : null
     }
   }
 })
