@@ -14,6 +14,15 @@
       </div>
     </ion-list>
   </div>
+  <div v-else
+    style="width: 100%; height: 100vh; background-image: linear-gradient(135deg, rgba(179,136,23,1) 0%, rgba(148,150,1,1) 50%, rgba(97,152,3,1) 100%); display: flex; justify-content: center; align-items: center;">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-snow" width="124" height="124"
+      viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" />
+      <path d="M11 15v.01m0 3v.01m0 3v.01m4 -4v.01m0 3v.01" />
+    </svg>
+  </div>
 </template>
 
 <script setup lang="ts">

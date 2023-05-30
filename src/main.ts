@@ -26,10 +26,10 @@ import './theme/variables.css'
 
 const app = createApp(App)
   .use(IonicVue)
-  .use(router)
+// .use(router)
 
 app.use(createPinia())
 
-router.isReady().then(() => {
-  app.mount('#app')
-})
+app.mount('#app')
+// router.isReady().then(() => {
+// })
